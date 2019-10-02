@@ -1,19 +1,8 @@
 <template>
   <div id="app">
-    <SearchPage />
+    <router-view></router-view>
   </div>
 </template>
-
-<script>
-import SearchPage from './components/SearchPage.vue'
-
-export default {
-  name: 'app',
-  components: {
-    SearchPage
-  }
-}
-</script>
 
 <style>
 #app {
