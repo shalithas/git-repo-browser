@@ -5,19 +5,31 @@
       <input name="username" />
     </form>
   </div>
+  <div v-else>
+    <p>Test</p>
+  </div>
 </template>
 <script>
+import { getRepos } from "./repoData.js";
+
 export default {
   name: "SearchPage",
   data: () => {
     return {
-      showForm: true
+      showForm: true,
+      repos: []
     };
   },
   methods: {
-    handleSubmit(evt) {
+    async handleSubmit(evt) {
       evt.preventDefault();
-      console.log(evt);
+      const input = evt.target.username;
+      try {
+          this.repos = await getRepos(input.value);
+      } catch (error) {
+          console.log(error);
+      }
+      this.showForm = false;
     }
   }
 };
