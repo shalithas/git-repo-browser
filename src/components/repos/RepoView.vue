@@ -22,7 +22,7 @@ export default {
           this.content = marked(atob(data.content));
           this.repos = data;
         })
-        .catch(e => {
+        .catch( () => {
           alert("No MD file");
 
           this.$router.push({

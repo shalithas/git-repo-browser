@@ -38,7 +38,6 @@ export default {
 
       getUser(username).then(data => {
         this.user = data;
-        console.log(data);
       });
     }
   },
@@ -48,7 +47,7 @@ export default {
     });
   },
   watch: {
-    $route(to, from) {
+    $route(to) {
       this.fetchRepos(to.params.username);
     }
   }
