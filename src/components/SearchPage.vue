@@ -7,16 +7,25 @@
   </div>
 </template>
 <script>
-import router from 'vue-router';
+import { getUser } from "./repos/repoData.js";
 
 export default {
   name: "SearchPage",
   methods: {
-    handleSubmit: function(evt) {
+    handleSubmit: async function(evt) {
       evt.preventDefault();
       const input = evt.target.username;
 
-      this.$router.push({ name: 'repo-list', params: { username: input.value } });
+      try {
+        const user = await getUser(input.value);
+
+        this.$router.push({
+          name: "repo-list",
+          params: { username: input.value }
+        });
+      } catch (error) {
+        alert("User not found");
+      }
     }
   }
 };
