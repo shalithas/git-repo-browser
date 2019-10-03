@@ -7,7 +7,7 @@ import { routes } from './components/routes.js';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes
 })
 
 Vue.config.productionTip = false;
