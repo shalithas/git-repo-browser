@@ -1,7 +1,7 @@
 import SearchPage from './SearchPage.vue';
-import ResultPane from './ResultPane.vue';
+import RepoList from './repos/RepoList.vue';
 
 export const routes = [
-    { path: '/:username', component: ResultPane },
+    { path: '/:username', component: RepoList },
     { path: '/', component: SearchPage },
 ];

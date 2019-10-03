@@ -2,7 +2,7 @@
   <div>
     <h1>{{ $route.params.username }}</h1>
     <ul>
-      <RepoItem v-for="repo in repos" v-bind:repo="repo" />
+      <RepoItem v-for="repo in repos" v-bind:key="repo.id" v-bind:repo="repo" />
     </ul>
   </div>
 </template>
@@ -11,7 +11,7 @@ import { getRepos } from "./repoData.js";
 import RepoItem from './RepoItem.vue';
 
 export default {
-  name: "ResultPane",
+  name: "RepoList",
   data: () => {
     return {
       repos: []
