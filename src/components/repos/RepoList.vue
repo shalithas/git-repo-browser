@@ -7,9 +7,12 @@
         <a v-bind:href="user.html_url" target="_blank">{{ user.login }}</a> )
       </h1>
     </div>
-    <ul>
-      <RepoItem v-for="repo in repos" v-bind:key="repo.id" v-bind:repo="repo" />
-    </ul>
+    <div>
+      <h3>Repositories</h3>
+      <ul>
+        <RepoItem v-for="repo in repos" v-bind:key="repo.id" v-bind:repo="repo" />
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -69,5 +72,9 @@ div.user {
 
 * {
   text-align: left;
+}
+
+ul {
+  list-style: none;
 }
 </style>

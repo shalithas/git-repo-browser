@@ -11,3 +11,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+li{
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+</style>
