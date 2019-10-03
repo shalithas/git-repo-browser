@@ -12,15 +12,24 @@ export default {
   data: () => {
     return {
       repo: null,
-      content: ''
+      content: ""
     };
   },
   methods: {
     fetchRepo(username, repoName) {
-      getRepo(username, repoName).then(data => {
-        this.content = marked(atob(data.content));
-        this.repos = data;
-      });
+      getRepo(username, repoName)
+        .then(data => {
+          this.content = marked(atob(data.content));
+          this.repos = data;
+        })
+        .catch(e => {
+          alert("No MD file");
+
+          this.$router.push({
+            name: "repo-list",
+            params: { username: this.$route.params.username }
+          });
+        });
     }
   },
   mounted: function() {

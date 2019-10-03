@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="user">
+    <div class="user" v-if="user">
       <img v-bind:src="user.avatar_url" alt="Avatar" width="100" />
       <h1>
         {{ user.name }} (
