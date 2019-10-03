@@ -9,3 +9,7 @@ export const getRepos = username => {
 export const getRepo = (username, repoName) => {
   return Axios.get(`${url}/repos/${username}/${repoName}/contents/README.md`).then(res => res.data);
 };
+
+export const getUser = username => {
+  return Axios.get(`${url}/users/${username}`).then(res => res.data);
+}

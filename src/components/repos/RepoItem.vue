@@ -1,7 +1,7 @@
 <template>
-  <a v-bind:href="repo.contents_url" target="_blank">
+  <router-link :to="{ name: 'repo-view', params: { username: repo.owner.login, repoName: repo.name }}">
     <li>{{repo.name}}</li>
-  </a>
+  </router-link>
 </template>
 <script>
 export default {

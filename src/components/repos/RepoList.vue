@@ -1,29 +1,41 @@
 <template>
   <div>
-    <h1>{{ $route.params.username }}</h1>
+    <div class="user">
+      <img v-bind:src="user.avatar_url" alt="Avatar" width="100" />
+      <h1>
+        {{ user.name }} (
+        <a v-bind:href="user.html_url" target="_blank">{{ user.login }}</a> )
+      </h1>
+    </div>
     <ul>
       <RepoItem v-for="repo in repos" v-bind:key="repo.id" v-bind:repo="repo" />
     </ul>
   </div>
 </template>
 <script>
-import { getRepos } from "./repoData.js";
-import RepoItem from './RepoItem.vue';
+import { getRepos, getUser } from "./repoData.js";
+import RepoItem from "./RepoItem.vue";
 
 export default {
   name: "RepoList",
   data: () => {
     return {
-      repos: []
+      repos: [],
+      user: null
     };
   },
   components: {
     RepoItem
   },
   methods: {
-    fetchRepos(username){
+    fetchRepos(username) {
       getRepos(username).then(data => {
         this.repos = data;
+      });
+
+      getUser(username).then(data => {
+        this.user = data;
+        console.log(data);
       });
     }
   },
@@ -40,7 +52,22 @@ export default {
 };
 </script>
 <style scoped>
-ul {
+div.user {
+  display: flex;
+}
+
+.user img,
+.user h1 {
+  display: inline-block;
+  height: 100px;
+}
+
+.user h1 {
+  line-height: 100px;
+  margin: 0 0 0 20px;
+}
+
+* {
   text-align: left;
 }
 </style>

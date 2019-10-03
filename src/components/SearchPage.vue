@@ -7,12 +7,16 @@
   </div>
 </template>
 <script>
+import router from 'vue-router';
+
 export default {
   name: "SearchPage",
   methods: {
-    async handleSubmit(evt) {
+    handleSubmit: function(evt) {
       evt.preventDefault();
       const input = evt.target.username;
+
+      this.$router.push({ name: 'repo-list', params: { username: input.value } });
     }
   }
 };
